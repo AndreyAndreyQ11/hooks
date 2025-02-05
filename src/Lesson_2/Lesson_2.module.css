@@ -1,0 +1,26 @@
+.container {
+  display: inline-flex;
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #fa8787;
+  font-family: Arial, sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+.main,
+.statistic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  white-space: nowrap;
+  padding: 0px 10px 0px 10px;
+}
+
+.main {
+  background-color: #3d4f3eaa;
+}
+
+.statistic {
+}
