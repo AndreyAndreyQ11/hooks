@@ -9,8 +9,8 @@ import Lesson_3 from "./Lesson_3/Lesson_3";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Lesson_1 />
-    <Lesson_2 />
+    {/* <Lesson_1 />
+    <Lesson_2 /> */}
     <Lesson_3 />
   </React.StrictMode>
 );

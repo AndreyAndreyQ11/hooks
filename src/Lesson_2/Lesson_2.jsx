@@ -26,7 +26,7 @@ function Lesson_2() {
     const { Good, Neutral, Bad } = counter
     const denominator = Good + Neutral + Bad;
 
-    return denominator === 0 ? "0%" : Math.round((Good + Neutral * 0.5 + Bad * 0) / denominator * 10000) / 100 + '%';
+    return denominator === 0 ? "0%" : Math.round((Good + Neutral * 0.5) / denominator * 10000) / 100 + '%';
   }
 
   return (

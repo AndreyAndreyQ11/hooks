@@ -14,6 +14,8 @@ function Lesson_3() {
     "Oliver Hayes": "529 - 34 - 77",
   })
 
+  const [filteredCounter, setFilteredCounter] = useState({ ...counter })
+
   function clickOnDelete(name) {
     const { [name]: _, ...rest } = counter;
     setCounter(rest);
@@ -25,11 +27,12 @@ function Lesson_3() {
         <Phonebook
           counter={counter}
           setCounter={setCounter}
+          setFilteredCounter={setFilteredCounter}
         />
       </div>
 
       <div className={s.contacts}><h3>Contacts:</h3>
-        {Object.entries(counter).map(([name, number]) => (
+        {Object.entries(filteredCounter).map(([name, number]) => (
           <Contact
             key={name}
             name={name}

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import s from "./Phonebook.module.css";
 
-import InputSearch from "./InputSearch/InputSearch.js";
+import InputFiltered from "./InputFiltered/InputFiltered.js";
 
-export default function Phonebook({ counter, setCounter }) {
+export default function Phonebook({ counter, setCounter, setFilteredCounter }) {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
 
@@ -59,7 +59,10 @@ export default function Phonebook({ counter, setCounter }) {
       <button className={s.button} type="submit" onClick={handleAddContact}>
         Add contact
       </button>
-      <InputSearch counter={counter} setCounter={setCounter} />
+      <InputFiltered
+        counter={counter}
+        setFilteredCounter={setFilteredCounter}
+      />
     </>
   );
 }
