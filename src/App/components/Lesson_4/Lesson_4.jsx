@@ -89,14 +89,3 @@ export default function Lesson_4() {
     </div>
   );
 }
-const user = {
-  name: "Andrey",
-  sayHi: function () {
-    console.log(this.name);
-  },
-  sayHello: () => {
-    console.log(name);
-  }
-};
-user.sayHi();
-user.sayHello();
