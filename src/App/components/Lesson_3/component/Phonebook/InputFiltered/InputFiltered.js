@@ -1,17 +1,10 @@
 import React, { useState } from "react";
 import s from "./InputFiltered.module.css";
 
-export default function InputFiltered({ counter, setFilteredCounter }) {
+export default function InputFiltered({ setFilteredName }) {
   function search(e) {
     const value = e.target.value.toLowerCase();
-
-    setFilteredCounter(
-      Object.fromEntries(
-        Object.entries(counter).filter(([key]) =>
-          key.toLowerCase().includes(value)
-        )
-      )
-    );
+    setFilteredName((pre) => value);
   }
 
   return (

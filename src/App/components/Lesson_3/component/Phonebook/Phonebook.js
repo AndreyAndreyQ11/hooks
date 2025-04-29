@@ -3,38 +3,49 @@ import s from "./Phonebook.module.css";
 
 import InputFiltered from "./InputFiltered/InputFiltered.js";
 
-export default function Phonebook({ counter, setCounter, setFilteredCounter }) {
+export default function Phonebook({
+  setContactsArray,
+  setFilteredName,
+  fetchGetContacts,
+}) {
   const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   function handleNameChange(e) {
     const name = e.target.value;
     setName(name);
   }
 
-  function handleNumberChange(e) {
+  function handlephoneNumberChange(e) {
     const value = e.target.value;
-    if (/^\d*$/.test(value)) {
-      setNumber(value);
+    if (/^[\d\s-]*$/.test(value)) {
+      setPhoneNumber(value);
     }
   }
+
+  const fetchPostContacts = (name, phoneNumber) => {
+    fetch("/cats", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name: name, phoneNumber: phoneNumber }),
+    })
+      .then(() => fetchGetContacts()) // После добавления обновляем список
+      .catch((error) => console.error("Ошибка при добавлении:", error));
+  };
 
   function handleAddContact() {
     if (name == "") {
       return alert("ведите имя");
     }
-    if (number == "") {
+    if (phoneNumber == "") {
       return alert("ведите номер");
     }
 
-    setCounter((prevCounter) => {
-      return {
-        ...prevCounter,
-        [name]: number,
-      };
-    });
+    fetchPostContacts(name, phoneNumber);
     setName("");
-    setNumber("");
+    setPhoneNumber("");
   }
   return (
     <>
@@ -48,21 +59,18 @@ export default function Phonebook({ counter, setCounter, setFilteredCounter }) {
         value={name}
         onChange={handleNameChange}
       />
-      Number:
+      phoneNumber:
       <input
         className={s.input}
-        key="number"
+        key="phoneNumber"
         placeholder="Введите номер"
-        value={number}
-        onChange={handleNumberChange}
+        value={phoneNumber}
+        onChange={handlephoneNumberChange}
       />
       <button className={s.button} type="submit" onClick={handleAddContact}>
         Add contact
       </button>
-      <InputFiltered
-        counter={counter}
-        setFilteredCounter={setFilteredCounter}
-      />
+      <InputFiltered setFilteredName={setFilteredName} />
     </>
   );
 }
