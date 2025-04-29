@@ -1,0 +1,34 @@
+.container {
+  margin-bottom: 8px;
+}
+
+.link {
+  background-color: #6b7280;
+  color: wheat;
+  padding: 10px 20px;
+  margin-left: 2px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.link:hover {
+  background-color: #4b5563;
+  transform: translateY(+2px);
+}
+
+.link:active {
+  background-color: #374151;
+  transform: translateY(0);
+}
+
+.link:disabled {
+  background-color: #d1d5db;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
